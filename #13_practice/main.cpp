@@ -1,66 +1,30 @@
-#include <iostream>
-#include <string>
-using namespace std;
-
-int value(char Temp)
-{   
-	if (Temp == 'I' && 'i')
-		return 1;
-	if (Temp == 'V' && 'v')
-		return 5;
-	if (Temp == 'X' && 'x')
-		return 10;
-	if (Temp == 'L' && 'l')
-		return 50;
-	if (Temp == 'C' && 'c')
-		return 100;
-	if (Temp == 'D' && 'd')
-		return 500;
-	if (Temp == 'M' && 'm')
-		return 1000;
-		
-	return -1;
-}
-    
-	int sum;
-	
-	int RomanToNumber (string & roman)
-	{
-		for (int counter = 0; counter < roman.length(); counter++) {
-		
-			int s1 = value(roman[counter]);
-
-			if (counter + 1 < roman.length()) 
-			{
-			
-				int s2 = value(roman[counter + 1]);
-
-			
-				if (s1 >= s2) {
-			
-					sum = sum + s1;
-				}
-				else 
-				{
-			
-					sum = sum + s2 - s1;
-					counter++;
-				}
-			}
-		else {
-			sum = sum + s1;
-		}
+class Solution {
+public:
+    int romanToInt(string s) {
+        
+   string ronum;
+        
+   ronum['I'] = 1;
+   ronum['V'] = 5;
+   ronum['X'] = 10;
+   ronum['L'] = 50;
+   ronum['C'] = 100;
+   ronum['D'] = 500;
+   ronum['M'] = 1000;
+   
+   int romanToInt = 0;
+    for(int counter = 0; counter < s.length(); counter++)
+    {
+        if( counter + 1 < s.length() && ronum[s[counter]] < ronum[s[counter+1]])
+        {
+            romanToInt += ronum[s[counter+1]]- ronum[s[counter]];
+            counter++;
+        }
+       else
+       {
+          romanToInt += ronum[s[counter]];
+       }
+    }
+   	return romanToInt;
 	}
-	return sum;
-}
-
-int main()
-{
-	string roman;
-	cout << "Enter roman number :";
-	cin >> roman;
-	cout << RomanToNumber(roman);
-
-	return 0;
-}
-
+};
