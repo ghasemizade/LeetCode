@@ -1,8 +1,13 @@
+/* 
+Runtime = 10 ms
+Memory Usage = 8.2 MB
+*/
+
 class Solution {
 public:
     int romanToInt(string s) {
         
-   string ronum;
+    unordered_map<char,int> ronum;
         
    ronum['I'] = 1;
    ronum['V'] = 5;
@@ -13,18 +18,19 @@ public:
    ronum['M'] = 1000;
    
    int romanToInt = 0;
+   
     for(int counter = 0; counter < s.length(); counter++)
-    {
-        if( counter + 1 < s.length() && ronum[s[counter]] < ronum[s[counter+1]])
         {
-            romanToInt += ronum[s[counter+1]]- ronum[s[counter]];
-            counter++;
+            if(ronum[s[counter]] < ronum[s[counter+1]])
+            {
+                romanToInt += ronum[s[counter+1]]- ronum[s[counter]];
+                counter++;
+            }
+            else
+            {
+                romanToInt += ronum[s[counter]];
+            }
         }
-       else
-       {
-          romanToInt += ronum[s[counter]];
-       }
+        return romanToInt;
     }
-   	return romanToInt;
-	}
 };
