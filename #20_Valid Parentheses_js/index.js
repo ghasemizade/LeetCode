@@ -1,8 +1,5 @@
 // leetcode problem valid parentheses with js
-/**
- * @param {string}
- * @return {boolean}
- */
+
 var isValid = function(s) {
     let stack = [];
 
