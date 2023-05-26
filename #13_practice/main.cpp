@@ -1,7 +1,4 @@
-/* 
-Runtime = 10 ms
-Memory Usage = 8.2 MB
-*/
+
 
 class Solution {
 public:
